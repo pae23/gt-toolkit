@@ -19,7 +19,7 @@ Stages 1 and 4 use **multi-model analysis** — dispatching the same task to mul
 | Model | CLI | Used in |
 |-------|-----|---------|
 | Claude Opus 4.6 | Built-in (Task tool) | Stages 1, 4 |
-| GPT 5.3 Codex | [Codex CLI](https://github.com/openai/codex) (`codex`) | Stages 1, 4 |
+| GPT 5.4 | [Codex CLI](https://github.com/openai/codex) (`codex`) | Stages 1, 4 |
 | Gemini 3 Pro | [Gemini CLI](https://github.com/google-gemini/gemini-cli) (`gemini`) | Stages 1, 4 |
 
 ### What you need
@@ -138,7 +138,7 @@ Final quality gate using 3 models in parallel across 12 review categories.
 
 **Steps:**
 1. Gather or reuse codebase context
-2. Dispatch 3 models in parallel (Opus 4.6, GPT 5.3 Codex, Gemini 3 Pro) with all review categories (codebase match, security, design quality, performance, etc.)
+2. Dispatch 3 models in parallel (Opus 4.6, GPT 5.4, Gemini 3 Pro) with all review categories (codebase match, security, design quality, performance, etc.)
 3. Synthesize: deduplicate, build comparison table, group issues by severity
 4. Present findings, gate on user "go" / "skip"
 5. Resolve ambiguities, update spec with review section

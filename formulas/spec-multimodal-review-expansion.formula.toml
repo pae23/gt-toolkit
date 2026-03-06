@@ -13,7 +13,7 @@ This is an expansion-type formula for composition into other workflows.
 It transforms a single step into the full multimodal review process.
 
 Autonomous version of review-documentation skill:
-- All 3 models always (Opus 4.6, GPT 5.3 Codex, Gemini 3 Pro)
+- All 3 models always (Opus 4.6, GPT 5.4, Gemini 3 Pro)
 - All review categories always (no configuration)
 - Skips CLI preflight checks (assumes they work)
 - Reuses existing context.md if available from step 0
@@ -148,7 +148,7 @@ Dispatch all 3 models in parallel to review the spec.
 | Role | Model | CLI Command |
 |------|-------|-------------|
 | Claude | Opus 4.6 | Task(model="opus") |
-| OpenAI | GPT 5.3 Codex | codex exec -m "gpt-5.3-codex" |
+| OpenAI | GPT 5.4 | codex exec -m "gpt-5.4" |
 | Google | Gemini 3 Pro | gemini --model gemini-3-pro-preview |
 
 Do NOT use o3, o4-mini, Gemini 2.5, or any other model. These specific
@@ -299,7 +299,7 @@ Task(
 )
 
 Bash(
-  command="codex exec -m 'gpt-5.3-codex' -c reasoning_effort='high' \"$(cat /tmp/gpt_review_prompt.txt)\" && rm /tmp/gpt_review_prompt.txt",
+  command="codex exec -m 'gpt-5.4' -c reasoning_effort='high' \"$(cat /tmp/gpt_review_prompt.txt)\" && rm /tmp/gpt_review_prompt.txt",
   run_in_background=true,
   timeout=900000
 )
@@ -358,7 +358,7 @@ Keep the best description/evidence from whichever model articulated it best.
 
 Show **actual findings** per model, not just severity levels:
 
-| # | Issue | Opus 4.6 | GPT 5.3 | Gemini 3 | Agree? |
+| # | Issue | Opus 4.6 | GPT 5.4 | Gemini 3 | Agree? |
 |---|-------|----------|---------|----------|--------|
 | 1 | [Title] | [What Opus found + recommendation] | [What GPT found + recommendation] | [What Gemini found] | Yes/Partial/No |
 
@@ -424,7 +424,7 @@ Consolidate all ambiguities from the issues list:
 
 ## Model Comparison
 
-| # | Issue | Opus 4.6 | GPT 5.3 | Gemini 3 | Agree? |
+| # | Issue | Opus 4.6 | GPT 5.4 | Gemini 3 | Agree? |
 |---|-------|----------|---------|----------|--------|
 | 1 | [Title] | [Actual finding + recommendation] | [Actual finding] | [Finding or -] | Yes/No |
 | 2 | ... | ... | ... | ... | ... |
@@ -608,7 +608,7 @@ Record each resolution.
    ## Multi-Model Review
 
    **Reviewed:** [date]
-   **Models:** Opus 4.6, GPT 5.3 [, Gemini 3 if succeeded]
+   **Models:** Opus 4.6, GPT 5.4 [, Gemini 3 if succeeded]
    **Issues Found:** X (Y critical, Z high, W medium, V low)
 
    ### Findings Addressed
