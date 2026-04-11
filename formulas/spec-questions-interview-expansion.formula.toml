@@ -59,6 +59,7 @@ version = 1
 
 [[template]]
 id = "{target}.load-and-assess"
+interactive = true
 title = "Load spec and assess completeness"
 description = """
 **Output this banner to the user before starting work:**
@@ -228,6 +229,7 @@ If NO gaps found:
 
 [[template]]
 id = "{target}.clarifying-questions"
+interactive = true
 title = "Ask clarifying questions"
 needs = ["{target}.load-and-assess"]
 description = """
@@ -350,6 +352,7 @@ Present pass count to user: "Pass 2 of 3: Found N new gaps..."
 
 [[template]]
 id = "{target}.finalize"
+interactive = true
 title = "Summarize and update spec"
 needs = ["{target}.clarifying-questions"]
 description = """
@@ -470,6 +473,7 @@ Report completion:
 
 [[template]]
 id = "{target}.commit"
+interactive = true
 title = "Commit spec updates"
 needs = ["{target}.finalize"]
 description = """

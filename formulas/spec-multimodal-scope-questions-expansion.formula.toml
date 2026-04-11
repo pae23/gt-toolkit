@@ -59,6 +59,7 @@ version = 2
 
 [[template]]
 id = "{target}.context-gathering"
+interactive = true
 title = "Gather codebase context"
 description = """
 **Output this banner to the user before starting work:**
@@ -167,6 +168,7 @@ Wait for Haiku to complete (typically 30-60 seconds), then proceed to the model 
 
 [[template]]
 id = "{target}.opus-generation"
+interactive = true
 title = "Opus 4.6: Generate questions"
 needs = ["{target}.context-gathering"]
 description = """
@@ -335,6 +337,7 @@ Use TaskOutput with timeout: 600000 for each sub-task to wait for completion.
 
 [[template]]
 id = "{target}.opus-consolidation"
+interactive = true
 title = "Opus 4.6: Consolidate"
 needs = ["{target}.opus-generation"]
 description = """
@@ -389,6 +392,7 @@ This runs as a background task - do NOT wait for it before starting other consol
 
 [[template]]
 id = "{target}.gpt-generation"
+interactive = true
 title = "GPT 5.4: Generate questions"
 needs = ["{target}.context-gathering"]
 description = """
@@ -561,6 +565,7 @@ Use TaskOutput with timeout: 600000 for each background Bash call.
 
 [[template]]
 id = "{target}.gpt-consolidation"
+interactive = true
 title = "GPT 5.4: Consolidate"
 needs = ["{target}.gpt-generation"]
 description = """
@@ -617,6 +622,7 @@ This runs as a background task - do NOT wait for it before starting other consol
 
 [[template]]
 id = "{target}.gemini-generation"
+interactive = true
 title = "Gemini 3 Pro: Generate questions"
 needs = ["{target}.context-gathering"]
 description = """
@@ -783,6 +789,7 @@ Use TaskOutput with timeout: 600000 for each background Bash call.
 
 [[template]]
 id = "{target}.gemini-consolidation"
+interactive = true
 title = "Gemini 3 Pro: Consolidate"
 needs = ["{target}.gemini-generation"]
 description = """
@@ -839,6 +846,7 @@ This runs as a background task - do NOT wait for it before starting other consol
 
 [[template]]
 id = "{target}.synthesis"
+interactive = true
 title = "Synthesize 3x3 matrix into question backlog"
 needs = ["{target}.opus-consolidation", "{target}.gpt-consolidation", "{target}.gemini-consolidation"]
 description = """

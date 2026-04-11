@@ -67,6 +67,7 @@ required = true
 
 [[steps]]
 id = "kickoff"
+interactive = true
 title = "Plan Workflow Kickoff"
 description = """
 ═══════════════════════════════════════════════════════════════
@@ -91,6 +92,7 @@ Output this banner to the user, then close this step to begin.
 [[steps]]
 id = "step-1-plan-writing"
 needs = ["kickoff"]
+interactive = true
 title = "Step 1: Plan Writing"
 description = """
 Transform the reviewed spec into a phased implementation plan.
@@ -115,6 +117,7 @@ This step is expanded into the full plan-writing workflow:
 
 [[steps]]
 id = "checkpoint-after-plan-writing"
+interactive = true
 title = "Context Checkpoint"
 needs = ["step-1-plan-writing"]
 description = """
@@ -140,6 +143,7 @@ The next session picks up automatically at Plan Review (Stage 2).
 
 [[steps]]
 id = "step-2-plan-review"
+interactive = true
 title = "Step 2: Plan Review to Spec"
 needs = ["checkpoint-after-plan-writing"]
 description = """
@@ -166,6 +170,7 @@ This step is expanded into the full review workflow:
 
 [[steps]]
 id = "complete"
+interactive = true
 title = "Workflow Complete"
 needs = ["step-2-plan-review"]
 description = """

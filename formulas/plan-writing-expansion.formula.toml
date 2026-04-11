@@ -65,6 +65,7 @@ version = 1
 
 [[template]]
 id = "{target}.load-inputs"
+interactive = true
 title = "Validate inputs and setup"
 description = """
 **Output this banner to the user before starting work:**
@@ -125,6 +126,7 @@ Proceeding to codebase analysis...
 
 [[template]]
 id = "{target}.deep-analysis"
+interactive = true
 title = "Deep codebase analysis"
 needs = ["{target}.load-inputs"]
 description = """
@@ -320,6 +322,7 @@ If any agent fails, report the failure and continue with available results.
 
 [[template]]
 id = "{target}.consolidate-analysis"
+interactive = true
 title = "Consolidate codebase analysis"
 needs = ["{target}.deep-analysis"]
 description = """
@@ -391,6 +394,7 @@ This is a single agent — use blocking mode (no `run_in_background`).
 
 [[template]]
 id = "{target}.write-plan"
+interactive = true
 title = "Write implementation plan"
 needs = ["{target}.consolidate-analysis"]
 description = """
@@ -592,6 +596,7 @@ Before completing this step, verify:
 
 [[template]]
 id = "{target}.commit"
+interactive = true
 title = "Commit plan and artifacts"
 needs = ["{target}.write-plan"]
 description = """

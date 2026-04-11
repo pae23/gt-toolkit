@@ -67,6 +67,7 @@ required = true
 
 [[steps]]
 id = "kickoff"
+interactive = true
 title = "Beads Workflow Kickoff"
 description = """
 ═══════════════════════════════════════════════════════════════
@@ -91,6 +92,7 @@ Output this banner to the user, then close this step to begin.
 [[steps]]
 id = "step-1-beads-creation"
 needs = ["kickoff"]
+interactive = true
 title = "Step 1: Beads Creation"
 description = """
 Convert the reviewed plan into a beads epic with tasks and dependencies.
@@ -117,6 +119,7 @@ This step is expanded into the full beads-creation workflow:
 
 [[steps]]
 id = "checkpoint-after-beads-creation"
+interactive = true
 title = "Context Checkpoint"
 needs = ["step-1-beads-creation"]
 description = """
@@ -143,6 +146,7 @@ The next session picks up automatically at Beads Review (Stage 2).
 
 [[steps]]
 id = "step-2-beads-review"
+interactive = true
 title = "Step 2: Beads Review to Plan"
 needs = ["checkpoint-after-beads-creation"]
 description = """
@@ -169,6 +173,7 @@ This step is expanded into the full review workflow:
 
 [[steps]]
 id = "complete"
+interactive = true
 title = "Workflow Complete"
 needs = ["step-2-beads-review"]
 description = """

@@ -61,6 +61,7 @@ version = 2
 
 [[template]]
 id = "{target}.gather-context"
+interactive = true
 title = "Gather codebase context"
 description = """
 **Output this banner to the user before starting work:**
@@ -138,6 +139,7 @@ Be thorough but fast. Context only, don't read full file contents."
 
 [[template]]
 id = "{target}.dispatch-reviewers"
+interactive = true
 title = "Dispatch 3 parallel reviewers"
 needs = ["{target}.gather-context"]
 description = """
@@ -342,6 +344,7 @@ Use 900000ms (15 min) timeout. Don't give up early.
 
 [[template]]
 id = "{target}.synthesize"
+interactive = true
 title = "Synthesize and compare results"
 needs = ["{target}.dispatch-reviewers"]
 description = """
@@ -487,6 +490,7 @@ Write synthesis to: `plans/{{feature}}/02-spec/spec-review.md`
 
 [[template]]
 id = "{target}.present-findings"
+interactive = true
 title = "Present findings and gate"
 needs = ["{target}.synthesize"]
 description = """
@@ -549,6 +553,7 @@ After presenting:
 
 [[template]]
 id = "{target}.action-findings"
+interactive = true
 title = "Action the findings"
 needs = ["{target}.present-findings"]
 description = """
@@ -663,6 +668,7 @@ After modifications:
 
 [[template]]
 id = "{target}.commit"
+interactive = true
 title = "Commit review and any updates"
 needs = ["{target}.action-findings"]
 description = """

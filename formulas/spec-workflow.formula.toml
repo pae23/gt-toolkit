@@ -75,6 +75,7 @@ required = true
 
 [[steps]]
 id = "kickoff"
+interactive = true
 title = "Spec Workflow Kickoff"
 description = """
 ═══════════════════════════════════════════════════════════════
@@ -100,6 +101,7 @@ Output this banner to the user, then close this step to begin.
 
 [[steps]]
 id = "step-1-scope-questions"
+interactive = true
 title = "Step 1: Multimodal Scope Questions"
 needs = ["kickoff"]
 description = """
@@ -123,6 +125,7 @@ This step is expanded into the full 3x3 matrix analysis:
 
 [[steps]]
 id = "checkpoint-after-scope"
+interactive = true
 title = "Context Checkpoint"
 needs = ["step-1-scope-questions"]
 description = """
@@ -149,6 +152,7 @@ The next session picks up automatically at Brainstorm (Stage 2).
 
 [[steps]]
 id = "step-2-brainstorm"
+interactive = true
 title = "Step 2: Brainstorm"
 needs = ["checkpoint-after-scope"]
 description = """
@@ -173,6 +177,7 @@ This step is expanded into the full brainstorming workflow:
 
 [[steps]]
 id = "checkpoint-after-brainstorm"
+interactive = true
 title = "Context Checkpoint"
 needs = ["step-2-brainstorm"]
 description = """
@@ -198,6 +203,7 @@ The next session picks up automatically at Questions Interview (Stage 3).
 
 [[steps]]
 id = "step-3-questions-interview"
+interactive = true
 title = "Step 3: Questions Interview"
 needs = ["checkpoint-after-brainstorm"]
 description = """
@@ -222,6 +228,7 @@ This step is expanded into the full interview workflow:
 
 [[steps]]
 id = "step-4-multimodal-review"
+interactive = true
 title = "Step 4: Multimodal Review"
 needs = ["step-3-questions-interview"]
 description = """
@@ -245,6 +252,7 @@ This step is expanded into the full multimodal review workflow:
 
 [[steps]]
 id = "complete"
+interactive = true
 title = "Workflow Complete"
 needs = ["step-4-multimodal-review"]
 description = """

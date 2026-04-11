@@ -115,6 +115,7 @@ version = 2
 
 [[template]]
 id = "{target}.load-inputs"
+interactive = true
 title = "Validate inputs"
 description = """
 **Output this banner to the user before starting work:**
@@ -185,6 +186,7 @@ Proceeding to draft structure...
 
 [[template]]
 id = "{target}.draft-structure"
+interactive = true
 title = "Draft beads structure"
 needs = ["{target}.load-inputs"]
 description = """
@@ -371,6 +373,7 @@ Use this format:
 
 [[template]]
 id = "{target}.review-completeness"
+interactive = true
 title = "Review Pass 1: Completeness"
 needs = ["{target}.draft-structure"]
 description = """
@@ -466,6 +469,7 @@ If the review was clean, report "Pass 1: Clean" and proceed.
 
 [[template]]
 id = "{target}.review-dependencies"
+interactive = true
 title = "Review Pass 2: Dependencies"
 needs = ["{target}.review-completeness"]
 description = """
@@ -572,6 +576,7 @@ If the review was clean, report "Pass 2: Clean" and proceed.
 
 [[template]]
 id = "{target}.review-clarity"
+interactive = true
 title = "Review Pass 3: Clarity"
 needs = ["{target}.review-dependencies"]
 description = """
@@ -690,6 +695,7 @@ Proceeding to execution...
 
 [[template]]
 id = "{target}.execute"
+interactive = true
 title = "Create beads"
 needs = ["{target}.review-clarity"]
 description = """
@@ -815,6 +821,7 @@ If a `bd create` command fails:
 
 [[template]]
 id = "{target}.report-commit"
+interactive = true
 title = "Report and commit"
 needs = ["{target}.execute"]
 description = """

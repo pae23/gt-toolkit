@@ -68,6 +68,7 @@ version = 1
 
 [[template]]
 id = "{target}.load-inputs"
+interactive = true
 title = "Validate inputs and snapshot beads"
 description = """
 **Output this banner to the user before starting work:**
@@ -186,6 +187,7 @@ Proceeding to parallel review...
 
 [[template]]
 id = "{target}.parallel-review"
+interactive = true
 title = "Dispatch 3 parallel review agents"
 needs = ["{target}.load-inputs"]
 description = """
@@ -551,6 +553,7 @@ If any agent fails, report the failure and continue with available results.
 
 [[template]]
 id = "{target}.consolidate"
+interactive = true
 title = "Consolidate review findings"
 needs = ["{target}.parallel-review"]
 description = """
@@ -723,6 +726,7 @@ rm -f plans/{{feature}}/04-beads/beads-snapshot.tmp
 
 [[template]]
 id = "{target}.present-resolve"
+interactive = true
 title = "Present findings and resolve"
 needs = ["{target}.consolidate"]
 description = """
@@ -879,6 +883,7 @@ Report:
 
 [[template]]
 id = "{target}.commit"
+interactive = true
 title = "Commit review report"
 needs = ["{target}.present-resolve"]
 description = """

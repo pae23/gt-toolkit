@@ -56,6 +56,7 @@ version = 1
 
 [[template]]
 id = "{target}.kickoff"
+interactive = true
 title = "Initialize brainstorming session"
 description = """
 **Output this banner to the user before starting work:**
@@ -187,6 +188,7 @@ Then proceed directly to the brainstorm-session step using standard mode
 
 [[template]]
 id = "{target}.question-triage"
+interactive = true
 title = "Triage scope questions"
 needs = ["{target}.kickoff"]
 description = """
@@ -354,6 +356,7 @@ Remaining questions with no dependencies:
 
 [[template]]
 id = "{target}.brainstorm-session"
+interactive = true
 title = "Brainstorming dialogue"
 needs = ["{target}.question-triage"]
 description = """
@@ -578,6 +581,7 @@ Does this section look right so far? Any concerns or changes?
 
 [[template]]
 id = "{target}.write-spec"
+interactive = true
 title = "Write spec document"
 needs = ["{target}.brainstorm-session"]
 description = """
@@ -775,6 +779,7 @@ Before completing this step, verify:
 
 [[template]]
 id = "{target}.commit"
+interactive = true
 title = "Commit spec and related files"
 needs = ["{target}.write-spec"]
 description = """
