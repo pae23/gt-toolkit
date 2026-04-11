@@ -15,29 +15,37 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Sync from upstream
+      - name: Rebase onto upstream
         run: |
+          set -e
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Save our workflow files (not in upstream)
-          mkdir -p /tmp/gh-workflows
-          cp -r .github/workflows/* /tmp/gh-workflows/
-
-          # Fetch upstream and reset
           git remote add upstream https://github.com/Xexr/gt-toolkit.git
           git fetch upstream main
-          git reset --hard upstream/main
 
-          # Restore our workflow files
-          mkdir -p .github/workflows
-          cp -r /tmp/gh-workflows/* .github/workflows/
-          git add .github/workflows/
+          # Fast-exit if we already contain everything upstream has
+          if git merge-base --is-ancestor upstream/main HEAD; then
+            echo "Already up to date with upstream/main — nothing to do."
+            exit 0
+          fi
 
-          # Commit and push only if there are changes
-          if ! git diff --cached --quiet; then
-            git commit -m "ci: sync from upstream Xexr/gt-toolkit"
-            git push origin main --force
+          # Try to rebase local commits on top of upstream/main.
+          # On conflict: abort cleanly, fail the job so a human resolves it.
+          if git rebase upstream/main; then
+            echo "Rebase clean — pushing."
+            git push --force-with-lease origin main
           else
-            git push origin main --force
+            git rebase --abort || true
+            echo ""
+            echo "::error::Rebase onto upstream/main failed due to conflicts."
+            echo ""
+            echo "Resolve locally:"
+            echo "  git fetch upstream"
+            echo "  git rebase upstream/main"
+            echo "  # fix conflicts, then:"
+            echo "  git add <files>"
+            echo "  git rebase --continue"
+            echo "  git push --force-with-lease origin main"
+            exit 1
           fi
