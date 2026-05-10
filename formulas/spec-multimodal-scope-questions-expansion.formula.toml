@@ -169,7 +169,7 @@ Wait for Haiku to complete (typically 30-60 seconds), then proceed to the model 
 [[template]]
 id = "{target}.opus-generation"
 interactive = true
-title = "Opus 4.6: Generate questions"
+title = "Opus 4.7: Generate questions"
 needs = ["{target}.context-gathering"]
 description = """
 Launch THREE parallel Opus sub-tasks. Each writes to a temp file.
@@ -338,7 +338,7 @@ Use TaskOutput with timeout: 600000 for each sub-task to wait for completion.
 [[template]]
 id = "{target}.opus-consolidation"
 interactive = true
-title = "Opus 4.6: Consolidate"
+title = "Opus 4.7: Consolidate"
 needs = ["{target}.opus-generation"]
 description = """
 **DISPATCH IMMEDIATELY** when opus-generation completes. Do NOT wait for GPT or Gemini.
@@ -363,7 +363,7 @@ Write to: plans/{{feature}}/01-scope/opus-questions.md
 
 Use this format:
 ```markdown
-# Opus 4.6 Analysis: {{feature}}
+# Opus 4.7 Analysis: {{feature}}
 
 ## User Advocate Perspective
 [Full content from opus-user-advocate.tmp - preserve all questions]
@@ -393,7 +393,7 @@ This runs as a background task - do NOT wait for it before starting other consol
 [[template]]
 id = "{target}.gpt-generation"
 interactive = true
-title = "GPT 5.4: Generate questions"
+title = "GPT 5.5: Generate questions"
 needs = ["{target}.context-gathering"]
 description = """
 Run THREE Codex CLI calls in parallel. Each writes to a temp file.
@@ -408,7 +408,7 @@ command -v codex >/dev/null 2>&1 && echo "Codex CLI available" || echo "SKIP: Co
 ```
 
 **If Codex CLI is NOT installed:**
-1. Write `plans/{{feature}}/01-scope/gpt-questions.md` with content: `# GPT 5.4: Skipped\n\nCodex CLI not installed. GPT analysis was not performed.`
+1. Write `plans/{{feature}}/01-scope/gpt-questions.md` with content: `# GPT 5.5: Skipped\n\nCodex CLI not installed. GPT analysis was not performed.`
 2. Close this step and proceed — the synthesis step will work with available models only.
 
 **If Codex CLI IS installed**, continue with execution below.
@@ -424,7 +424,7 @@ Run all three in parallel using `run_in_background=true` on the Bash calls.
 
 ### Analysis 1: User Advocate (GPT)
 ```bash
-codex exec -m "gpt-5.4" -c reasoning_effort="high" \
+codex exec -m "gpt-5.5" -c reasoning_effort="high" \
   -o plans/{{feature}}/01-scope/gpt-user-advocate.tmp \
   "$(cat <<'PROMPT'
 You are a User Advocate analyzing a feature brief.
@@ -466,7 +466,7 @@ PROMPT
 
 ### Analysis 2: Product Designer (GPT)
 ```bash
-codex exec -m "gpt-5.4" -c reasoning_effort="high" \
+codex exec -m "gpt-5.5" -c reasoning_effort="high" \
   -o plans/{{feature}}/01-scope/gpt-product-designer.tmp \
   "$(cat <<'PROMPT'
 You are a Product Designer analyzing a feature brief.
@@ -513,7 +513,7 @@ PROMPT
 
 ### Analysis 3: Domain Expert (GPT)
 ```bash
-codex exec -m "gpt-5.4" -c reasoning_effort="high" \
+codex exec -m "gpt-5.5" -c reasoning_effort="high" \
   -o plans/{{feature}}/01-scope/gpt-domain-expert.tmp \
   "$(cat <<'PROMPT'
 You are a Domain Expert analyzing a feature brief.
@@ -566,7 +566,7 @@ Use TaskOutput with timeout: 600000 for each background Bash call.
 [[template]]
 id = "{target}.gpt-consolidation"
 interactive = true
-title = "GPT 5.4: Consolidate"
+title = "GPT 5.5: Consolidate"
 needs = ["{target}.gpt-generation"]
 description = """
 **DISPATCH IMMEDIATELY** when gpt-generation completes. Do NOT wait for Opus or Gemini.
@@ -593,7 +593,7 @@ Write to: plans/{{feature}}/01-scope/gpt-questions.md
 
 Use this format:
 ```markdown
-# GPT 5.4 Analysis: {{feature}}
+# GPT 5.5 Analysis: {{feature}}
 
 ## User Advocate Perspective
 [Full content from gpt-user-advocate.tmp - preserve all questions]
