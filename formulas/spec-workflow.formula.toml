@@ -9,7 +9,7 @@
 # Uses expansion composition to inline all workflow steps.
 #
 # Usage:
-#   gt sling spec-workflow dypt/crew/neo \
+#   gc sling spec-workflow dypt/crew/neo \
 #     --var feature="command-palette" \
 #     --var brief="Add a keyboard-centric command palette for power users..."
 
@@ -51,7 +51,7 @@ bd mol current <molecule-id>
 closed). Closing a step unblocks the next one in the dependency chain.
 
 **Crash recovery:** Each `bd close` is durable. If your session crashes,
-the next session runs `gt prime` which detects the molecule on your hook
+the next session runs `gc prime` which detects the molecule on your hook
 and shows progress. `bd mol current` picks up at the next unclosed step.
 
 Do NOT batch-close all steps at the end — close each one as you finish it.
@@ -141,7 +141,7 @@ Scope questions (Stage 1) is complete. Key artifacts produced:
 **Otherwise**, cycle your context for the next phase:
 
 1. Close this step: `bd close <step-id>`
-2. Handoff: `gt handoff -s "Spec workflow: scope questions complete" -m "Scope questions generated via 3x3 matrix analysis. Questions backlog ready at plans/{{feature}}/01-scope/questions.md. Next: brainstorm phase — interactive dialogue to turn questions into validated spec."`
+2. Handoff: `gc handoff -s "Spec workflow: scope questions complete" -m "Scope questions generated via 3x3 matrix analysis. Questions backlog ready at plans/{{feature}}/01-scope/questions.md. Next: brainstorm phase — interactive dialogue to turn questions into validated spec."`
 
 The next session picks up automatically at Brainstorm (Stage 2).
 """
@@ -192,7 +192,7 @@ Brainstorm (Stage 2) is complete. Key artifacts produced:
 **Otherwise**, cycle your context for the next phase:
 
 1. Close this step: `bd close <step-id>`
-2. Handoff: `gt handoff -s "Spec workflow: brainstorm complete" -m "Brainstorm complete — spec draft written at plans/{{feature}}/02-spec/spec.md with branch points decided. Next: questions interview for completeness check + fresh assessment, then multimodal review."`
+2. Handoff: `gc handoff -s "Spec workflow: brainstorm complete" -m "Brainstorm complete — spec draft written at plans/{{feature}}/02-spec/spec.md with branch points decided. Next: questions interview for completeness check + fresh assessment, then multimodal review."`
 
 The next session picks up automatically at Questions Interview (Stage 3).
 """

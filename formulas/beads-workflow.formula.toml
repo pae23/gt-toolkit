@@ -47,7 +47,7 @@ bd mol current <molecule-id>
 closed). Closing a step unblocks the next one in the dependency chain.
 
 **Crash recovery:** Each `bd close` is durable. If your session crashes,
-the next session runs `gt prime` which detects the molecule on your hook
+the next session runs `gc prime` which detects the molecule on your hook
 and shows progress. `bd mol current` picks up at the next unclosed step.
 
 Do NOT batch-close all steps at the end — close each one as you finish it.
@@ -135,7 +135,7 @@ Beads creation (Stage 1) is complete. Key artifacts produced:
 **Otherwise**, cycle your context for the next phase:
 
 1. Close this step: `bd close <step-id>`
-2. Handoff: `gt handoff -s "Beads workflow: beads creation complete" -m "Beads hierarchy created from plan — feature epic, phase sub-epics, and task issues with dependency graph. Next: 3-agent bidirectional beads review checking beads↔plan alignment."`
+2. Handoff: `gc handoff -s "Beads workflow: beads creation complete" -m "Beads hierarchy created from plan — feature epic, phase sub-epics, and task issues with dependency graph. Next: 3-agent bidirectional beads review checking beads↔plan alignment."`
 
 The next session picks up automatically at Beads Review (Stage 2).
 """

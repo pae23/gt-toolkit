@@ -7,7 +7,7 @@
 # Uses expansion composition to inline all workflow steps.
 #
 # Usage:
-#   gt sling plan-workflow <crew> \
+#   gc sling plan-workflow <crew> \
 #     --var feature="command-palette"
 
 description = """
@@ -47,7 +47,7 @@ bd mol current <molecule-id>
 closed). Closing a step unblocks the next one in the dependency chain.
 
 **Crash recovery:** Each `bd close` is durable. If your session crashes,
-the next session runs `gt prime` which detects the molecule on your hook
+the next session runs `gc prime` which detects the molecule on your hook
 and shows progress. `bd mol current` picks up at the next unclosed step.
 
 Do NOT batch-close all steps at the end — close each one as you finish it.
@@ -132,7 +132,7 @@ Plan writing (Stage 1) is complete. Key artifacts produced:
 **Otherwise**, cycle your context for the next phase:
 
 1. Close this step: `bd close <step-id>`
-2. Handoff: `gt handoff -s "Plan workflow: plan writing complete" -m "Implementation plan written at plans/{{feature}}/03-plan/plan.md with phases, tasks, dependencies, and file paths. Next: 3-agent bidirectional plan review checking plan↔spec alignment."`
+2. Handoff: `gc handoff -s "Plan workflow: plan writing complete" -m "Implementation plan written at plans/{{feature}}/03-plan/plan.md with phases, tasks, dependencies, and file paths. Next: 3-agent bidirectional plan review checking plan↔spec alignment."`
 
 The next session picks up automatically at Plan Review (Stage 2).
 """

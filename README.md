@@ -1,6 +1,6 @@
-# gt-toolkit
+# gc-toolkit
 
-A collection of formulas and resources for [Gas Town](https://github.com/steveyegge/gastown) — the multi-agent workspace manager built on [Beads](https://github.com/steveyegge/beads) issue tracking.
+A collection of formulas and resources for [Gas City] — the multi-agent workspace manager built on [Beads](https://github.com/steveyegge/beads) issue tracking.
 
 ## Design-to-Delivery Pipeline
 
@@ -21,7 +21,7 @@ The headline feature: a formula-driven pipeline that takes a feature from initia
 
 **Beads phase** — Converts the plan into a fully-structured beads issue hierarchy (epics, sub-epics, tasks with acceptance criteria, validated dependency graph), then verifies coverage with 3-agent bidirectional review.
 
-**Delivery** — The [epic-delivery](https://github.com/Xexr/marketplace) skill dispatches waves of tasks to polecats in parallel, respecting the dependency graph for swarm-style execution.
+**Delivery** — sling the beads
 
 Three workflow formulas orchestrate the pipeline: `spec-workflow`, `plan-workflow`, and `beads-workflow`. Each stage can also be run individually. Works with Opus alone, or with all three LLMs for maximum review diversity.
 
@@ -36,29 +36,13 @@ See [formulas/README.md](formulas/README.md) for full stage-by-stage documentati
 | `docs/` | Workflow guides and reference material |
 | `configs/` | Configuration templates |
 
-## Installing formulas
-
-Copy formulas into your town-level formulas directory to make them available across all rigs:
-
-```bash
-cp formulas/*.formula.toml ~/gt/.beads/formulas/
-```
-
-Or copy to a specific rig's `.beads/formulas/` directory for project-scoped use.
 
 ## Documentation
 
 - [formulas/README.md](formulas/README.md) — Full pipeline documentation with stage descriptions, diagrams, and usage examples
-- [docs/CONTRIBUTING-TO-GASTOWN.md](docs/CONTRIBUTING-TO-GASTOWN.md) — Guide for contributing upstream to Gas Town
 
-## Contributing
 
-Issues and PRs welcome. If you have a formula or workflow that's been useful, feel free to share it.
 
 ## Acknowledgements
 
 The brainstorming and plan-writing stages draw inspiration from [obra/superpowers](https://github.com/obra/superpowers/tree/main).
-
-## License
-
-MIT

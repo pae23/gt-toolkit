@@ -1,6 +1,16 @@
+# interaction
+instancie un agent au niveau du rig appele idea-to-beads on_demand
+ce dernier dois pouvoir appeler les formules et afficher ce qu elles ont produit au moment ou il faut un arbitrage ou une demande et qui demande avant de relancer chaque suivante et uiq affiche les petits cadres pour montrer ou on en est dnas le process (exemple : ═══════════════════════════════════════════════════════════════
+ STAGE 1: MULTIMODAL SCOPE QUESTIONS
+ 3x3 matrix of models and perspectives surfaces design blind spots.
+
+ Pipeline: Spec (1-4) > Plan (5-6) > Beads (7-8) > Delivery
+ You are here: ■ □ □ □ | □ □ | □ □
+═══════════════════════════════════════════════════════════════)
+
 # Formulas
 
-Design and planning formulas for the `gt sling` pipeline. These take a feature from initial idea through to a fully reviewed design spec, a detailed implementation plan, and a comprehensive beads issue hierarchy ready for execution.
+Design and planning formulas for the `gc sling` pipeline. These take a feature from initial idea through to a fully reviewed design spec, a detailed implementation plan, and a comprehensive beads issue hierarchy ready for execution.
 
 ## Architecture
 
@@ -27,17 +37,9 @@ Stages 1 and 4 use **multi-model analysis** — dispatching the same task to mul
 - **Opus only (minimum):** The pipeline works with just Claude. Stages 1 and 4 will skip models whose CLIs aren't installed and synthesize from available results. Single-model output is still valuable.
 - **Full multi-LLM (recommended):** Install the Codex and Gemini CLIs for maximum review diversity. Each model brings different reasoning patterns and catches different issues.
 
-### Installing the CLIs
+### Using the agents
 
-```bash
-# Codex CLI (OpenAI) — requires OpenAI authentication
-npm install -g @openai/codex
-
-# Gemini CLI (Google) — requires Google authentication
-npm install -g @google/gemini-cli
-```
-
-Refer to each CLI's documentation for authentication setup: [Codex CLI](https://github.com/openai/codex), [Gemini CLI](https://github.com/google-gemini/gemini-cli).
+simple example :  https://vor.hexaglobe.net/tools/gascity-pack-chat
 
 ## The Pipeline
 
@@ -279,7 +281,7 @@ Stages 2 and 3 are interactive (user dialogue). Stage 4 presents findings and re
 
 **Usage:**
 ```bash
-gt sling spec-workflow <crew> \
+gc sling spec-workflow <crew> \
   --var feature="command-palette" \
   --var brief="Add a keyboard-centric command palette for power users..."
 ```
@@ -298,7 +300,7 @@ Step 5 is interactive (user dialogue for architectural decisions). Step 6 auto-a
 
 **Usage:**
 ```bash
-gt sling plan-workflow <crew> \
+gc sling plan-workflow <crew> \
   --var feature="command-palette"
 ```
 
@@ -318,7 +320,7 @@ Step 7 is interactive (user dialogue for granularity decisions). Step 8 auto-app
 
 **Usage:**
 ```bash
-gt sling beads-workflow <crew> \
+gc sling beads-workflow <crew> \
   --var feature="command-palette"
 ```
 
@@ -332,16 +334,16 @@ To run the complete pipeline from idea to reviewed beads:
 
 ```bash
 # Stages 1-4: Spec pipeline
-gt sling spec-workflow <crew> \
+gc sling spec-workflow <crew> \
   --var feature="command-palette" \
   --var brief="Add a keyboard-centric command palette for power users..."
 
 # Stages 5-6: Plan pipeline (after spec is reviewed)
-gt sling plan-workflow <crew> \
+gc sling plan-workflow <crew> \
   --var feature="command-palette"
 
 # Stages 7-8: Beads pipeline (after plan is reviewed)
-gt sling beads-workflow <crew> \
+gc sling beads-workflow <crew> \
   --var feature="command-palette"
 ```
 
@@ -349,37 +351,35 @@ Or run each stage individually via its expansion formula:
 
 ```bash
 # Stage 1: Multimodal scope questions
-gt sling spec-multimodal-scope-questions-expansion <crew> \
+gc sling spec-multimodal-scope-questions-expansion <crew> \
   --var feature="command-palette" \
   --var brief="Add a keyboard-centric command palette for power users..."
 
 # Stage 2: Brainstorm
-gt sling spec-brainstorm-expansion <crew> \
+gc sling spec-brainstorm-expansion <crew> \
   --var feature="command-palette"
 
 # Stage 3: Questions interview
-gt sling spec-questions-interview-expansion <crew> \
+gc sling spec-questions-interview-expansion <crew> \
   --var feature="command-palette"
 
 # Stage 4: Multimodal review
-gt sling spec-multimodal-review-expansion <crew> \
+gc sling spec-multimodal-review-expansion <crew> \
   --var feature="command-palette"
 
 # Stage 5: Plan writing
-gt sling plan-writing-expansion <crew> \
+gc sling plan-writing-expansion <crew> \
   --var feature="command-palette"
 
 # Stage 6: Plan review
-gt sling plan-review-to-spec-expansion <crew> \
+gc sling plan-review-to-spec-expansion <crew> \
   --var feature="command-palette"
 
 # Stage 7: Beads creation
-gt sling beads-creation-expansion <crew> \
+gc sling beads-creation-expansion <crew> \
   --var feature="command-palette"
 
 # Stage 8: Beads review
-gt sling beads-review-to-plan-expansion <crew> \
+gc sling beads-review-to-plan-expansion <crew> \
   --var feature="command-palette"
 ```
-
-

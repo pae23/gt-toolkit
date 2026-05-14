@@ -47,7 +47,7 @@ bd mol current <molecule-id>
 closed). Closing a step unblocks the next one in the dependency chain.
 
 **Crash recovery:** Each `bd close` is durable. If your session crashes,
-the next session runs `gt prime` which detects the molecule on your hook
+the next session runs `gc prime` which detects the molecule on your hook
 and shows progress. `bd mol current` picks up at the next unclosed step.
 
 Do NOT batch-close all steps at the end — close each one as you finish it.
